@@ -26,7 +26,6 @@ jobs:
 
     - name: Build APK
       run: |
-        # Agar gradlew root par nahi hai toh pehli milne wali gradlew ki folder mein chale jao
         GRADLE_FILE=$(find . -name "gradlew" -print -quit)
         GRADLE_DIR=$(dirname "$GRADLE_FILE")
         
@@ -36,7 +35,7 @@ jobs:
         ./gradlew assembleDebug
 
     - name: Upload APK Artifact
-      uses: upload/action-artifact@v4 # (ya upload-artifact@v4)
+      uses: actions/upload-artifact@v4
       with:
         name: stamp-tv-apk
         path: "**/build/outputs/apk/debug/*.apk"
